@@ -34,6 +34,27 @@ dyraste = percentile(kommun, [100])
 print(f"Billigaste skatten låg på", billigaste, "procentenheter")
 print(f"Dyraste skatten låg på", dyraste, "procentenheter")
 
+
+# text = open("genomsnittligskatt.csv", "r")
+# text = ''.join([i for i in text]) \
+#     .replace(",", ".")
+# x = open("genosnittligskattnew.csv","w")
+# x.writelines(text)
+# x.close()
+
+skatt_sthlm = pd.read_csv('genosnittligskattnew.csv', sep=';')
+län = skatt_sthlm[['Stockholms län']]
+årtal = skatt_sthlm[['År']]
+
+
+plt.plot(årtal,län,label='Stockholmslän år 2000-2020')
+plt.ylabel('Skatt i procentenheter')
+plt.xlabel('Årtal')
+plt.legend(län)
+plt.tight_layout()
+plt.show()
+
+
 # text = open("skattregion.csv", "r")
 # text = ''.join([i for i in text]) \
 #     .replace(",", ".")
@@ -111,22 +132,4 @@ plt.xlabel('Svart = regionalskatt // Färg = kommunalskatt')
 plt.ylabel('Skatt i procentenheter')
 plt.show()
 
-# text = open("genomsnittligskatt.csv", "r")
-# text = ''.join([i for i in text]) \
-#     .replace(",", ".")
-# x = open("genosnittligskattnew.csv","w")
-# x.writelines(text)
-# x.close()
-
-skatt_sthlm = pd.read_csv('genosnittligskattnew.csv', sep=';')
-län = skatt_sthlm[['Stockholms län']]
-årtal = skatt_sthlm[['År']]
-
-
-plt.plot(årtal,län,label='Stockholmslän år 2000-2020')
-plt.ylabel('Skatt i procentenheter')
-plt.xlabel('Årtal')
-plt.legend(län)
-plt.tight_layout()
-plt.show()
 
